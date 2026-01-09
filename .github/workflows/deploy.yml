@@ -21,7 +21,7 @@ jobs:
         echo "${{ secrets.GCP_KEY_B64 }}" | base64 --decode > $HOME/gcp-key.json
         gcloud auth activate-service-account --key-file=$HOME/gcp-key.json
         gcloud config set project cruisecicdpipeline
-        gcloud auth application-default login --key-file=$HOME/gcp-key.json
+        echo "GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcp-key.json" >> $GITHUB_ENV
 
 
 
