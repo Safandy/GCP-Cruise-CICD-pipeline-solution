@@ -18,7 +18,7 @@ jobs:
 
     - name: Authenticate to GCP
       run: |
-        echo "${{ secrets.GCP_CREDENTIALS }}" > $HOME/gcp-key.json
+        printf '%s' "${{ secrets.GCP_CREDENTIALS }}" > $HOME/gcp-key.json  
         gcloud auth activate-service-account --key-file=$HOME/gcp-key.json
         gcloud config set project cruisecicdpipeline
         gcloud auth application-default login --key-file=$HOME/gcp-key.json
