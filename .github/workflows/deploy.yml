@@ -30,6 +30,8 @@ jobs:
 
     - name: Terraform Apply
       run: terraform apply -auto-approve
+    - name: Sleep for 30 seconds
+      run: sleep 90
 
     - name: Capture Terraform Outputs
       id: tf_outputs
