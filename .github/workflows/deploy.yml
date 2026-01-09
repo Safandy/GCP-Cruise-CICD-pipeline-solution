@@ -16,6 +16,15 @@ jobs:
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v3
 
+    - name: Authenticate to GCP
+      run: |
+        echo "${{ secrets.GCP_CREDENTIALS }}" > $HOME/gcp-key.json
+        gcloud auth activate-service-account --key-file=$HOME/gcp-key.json
+        gcloud config set project cruisecicdpipeline
+        gcloud auth application-default login --key-file=$HOME/gcp-key.json
+
+
+
     - name: Terraform Init
       run: terraform init
 
